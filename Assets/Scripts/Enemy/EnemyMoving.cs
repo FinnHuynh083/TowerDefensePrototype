@@ -5,13 +5,22 @@ using UnityEngine.AI;
 
 public class EnemyMoving : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private Transform _target;
-    [SerializeField] private NavMeshAgent _agent;
+    [SerializeField] public float _speed;
+    [SerializeField] public Transform _target;
+    [SerializeField] public NavMeshAgent _agent;
 
     private void Update()
     {
         _agent.SetDestination(_target.position);
         _agent.speed = _speed;
+    }
+
+    public bool IsArrived()
+    {
+        if (Vector3.Distance(transform.position, _target.position) <= _agent.stoppingDistance)
+        {
+            return true;
+        }
+        return false;
     }
 }

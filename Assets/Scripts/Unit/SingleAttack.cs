@@ -25,7 +25,7 @@ public class SingleAttack : MonoBehaviour
         //tach sk attack va vfx ra 2 event
     }
 
-    public bool IsAttacking => _targetter.CurrentTarget != null;
+    public virtual bool IsAttacking => _targetter.CurrentTarget != null;
 
     public bool AttackNow()
     {

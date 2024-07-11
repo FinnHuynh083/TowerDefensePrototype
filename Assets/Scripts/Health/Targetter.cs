@@ -7,7 +7,7 @@ public class Targetter : MonoBehaviour
     [SerializeField] private float _targetRange;
     [SerializeField] private SphereCollider _unitSphereCollider;
     [SerializeField] private float _scanRate=0.1f;
-    [SerializeField] private Transform _basePos;
+    [SerializeField] public Transform _basePos;
 
     private List<Targetable> InRangeEnemies = new List<Targetable>();
     private Targetable _currentTarget= null;
@@ -51,15 +51,30 @@ public class Targetter : MonoBehaviour
             }
             _scanTimer = _scanRate;
         }
-        //them dk luc quai die
-        if (_currentTarget!=null&& _currentTarget.IsDead)
+        //them dk luc quai die _currentTarget!=null&&
+        if (_currentTarget != null && _currentTarget.IsDead)
         {
             //remove khoi list
             InRangeEnemies.Remove(_currentTarget);
+
+            //remove at - duyet full inrangeenemies - chay luoi tu lenght ve bat dau == null remove at enemy
+            RemoveNullTarget();
+
             //tim lai enemy gan nhat
             _currentTarget = FindTargetNearestBase();
         }
     }
+    private void RemoveNullTarget()
+    {
+        for(int i = 0; i < InRangeEnemies.Count; i++)
+        {
+            if (InRangeEnemies[i] == null)
+            {
+                InRangeEnemies.RemoveAt(i);
+            }
+        }
+    }
+
     private void PrintInRangeEnemies(List<Targetable> targetables)
     {
         print("Enemies In Range");
@@ -105,6 +120,10 @@ public class Targetter : MonoBehaviour
         float minDistance = float.MaxValue;
         for (int i = 0; i < InRangeEnemies.Count; i++)
         {
+            if (InRangeEnemies[i]== null) return result;
+            //them vao de fix bug khi spawn unit ngay tai thoi diem quai chet
+            //>> current target cua unit ket o enemy da~ chet >> null missing ko lay dc pos de so sanh
+
             var distance = Vector3.Distance(InRangeEnemies[i].Position, _basePos.position);
             if (distance < minDistance)
             {

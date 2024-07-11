@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 877684268301869000}
   - component: {fileID: 6225034862766378035}
   - component: {fileID: 2343579416977174615}
+  - component: {fileID: 2839043202410189310}
   m_Layer: 0
   m_Name: SkeletonUnit
   m_TagString: Untagged
@@ -210,6 +211,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 1827834129530201148}
+--- !u!114 &2839043202410189310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7024245943158040563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fbbcffc28bd4547975343b2b31a432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dimension: {x: 1, y: 1}
 --- !u!1001 &824079120833408744
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -20,5 +20,17 @@ public class Targetable : MonoBehaviour
 
     public Health Health => _health;
 
-    public bool IsDead => _health.IsDead;
+    //public bool IsDead => _health.IsDead;
+    public bool IsDead
+    {
+        get
+        {
+            if (_health != null)
+            {
+                return _health.IsDead;
+            }
+            return false;
+        }
+    }
+
 }

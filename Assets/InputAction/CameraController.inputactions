@@ -6,10 +6,46 @@
             "id": "3978d785-9543-4cd5-9ae6-5fda20af0a68",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "MousePos-2D",
                     "type": "Value",
                     "id": "470a83f1-1d6c-41ff-963d-611e7d8ad8f9",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MousePos-3D",
+                    "type": "Value",
+                    "id": "527d15f0-5d4c-4bb6-9f71-fd4981e51909",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MouseClick",
+                    "type": "Button",
+                    "id": "624bbea7-e921-4396-ad3a-b27771633904",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UnitChoosing_test",
+                    "type": "Button",
+                    "id": "83c293ba-02d6-46f0-a175-ea5a6fa328e0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "UnitChoosing_test1",
+                    "type": "Button",
+                    "id": "b9233431-c624-4dbd-bfff-4abeaef05073",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -23,7 +59,51 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MousePos-2D",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76987c32-25a3-41e6-ae24-aa4c453acf57",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePos-3D",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d7043952-9f84-47ba-8dde-8024a8753d9e",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "de82e0e5-fb50-40de-a421-aa3421bd6c1b",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UnitChoosing_test",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b928f506-090d-470f-933d-dd8a4c24d1ad",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UnitChoosing_test1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
