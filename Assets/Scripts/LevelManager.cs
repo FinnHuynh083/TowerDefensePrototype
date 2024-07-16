@@ -6,9 +6,11 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _timerText;
-    [SerializeField] private TMP_Text _waveText;
+    //[SerializeField] private TMP_Text _timerText;
+    //[SerializeField] private TMP_Text _waveText;
     [SerializeField] private int _readyTime=10;
+    [SerializeField] private Gold _gold;
+    [SerializeField] private TextBinder _textBinder;
 
     public WaveScriptableObject[] waves;
     public UnityEvent<WaveScriptableObject> WaveStart;
@@ -32,13 +34,14 @@ public class LevelManager : MonoBehaviour
         UpdateWave();
         if (_lastWaveTime != CurrentWaveTime)
         {
-            _timerText.SetText(CurrentWaveTime.ToString());
-
+            //_timerText.SetText(CurrentWaveTime.ToString());
+            _textBinder.SetTimerText(CurrentWaveTime);
             _lastWaveTime = CurrentWaveTime;
         }
         if (_lastWave != _currentWave)
         {
-            _waveText.SetText($"Wave: {_currentWave+1}");
+            //_waveText.SetText($"Wave: {_currentWave+1}");
+            _textBinder.SetWaveText(_currentWave + 1);
             _lastWave = _currentWave;
         }
     }
@@ -66,6 +69,9 @@ public class LevelManager : MonoBehaviour
     {
         _currentWaveTime = _readyTime;
         IsReady = false;
+        //cong gold ket thuc quay tai day
+        _gold.ChangeBudget(waves[_currentWave]._goldReward);
+
         yield return new WaitForSeconds(_readyTime);
 
         _currentWave += 1;

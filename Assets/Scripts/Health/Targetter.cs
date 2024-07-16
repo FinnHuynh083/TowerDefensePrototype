@@ -124,13 +124,16 @@ public class Targetter : MonoBehaviour
             //them vao de fix bug khi spawn unit ngay tai thoi diem quai chet
             //>> current target cua unit ket o enemy da~ chet >> null missing ko lay dc pos de so sanh
 
-            var distance = Vector3.Distance(InRangeEnemies[i].Position, _basePos.position);
-            if (distance < minDistance)
+            if (_basePos.position != null)
             {
-                //remaining distance dang tra ve infinite
-                //tinh remaining distance =tay - theo duong chim bay
-                minDistance = distance;
-                result = InRangeEnemies[i];
+                var distance = Vector3.Distance(InRangeEnemies[i].Position, _basePos.position);
+                if (distance < minDistance)
+                {
+                    //remaining distance dang tra ve infinite
+                    //tinh remaining distance =tay - theo duong chim bay
+                    minDistance = distance;
+                    result = InRangeEnemies[i];
+                }
             }
         }
         return result;

@@ -16,3 +16,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ac75609a8af884bc59b1adbe076042a2, type: 2}
   - {fileID: 11400000, guid: 5724074f4a4624062859ee39afc8f4a5, type: 2}
   _waveDuration: 30
+  _goldReward: 1000

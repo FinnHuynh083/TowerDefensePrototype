@@ -7,4 +7,5 @@ public class WaveScriptableObject : ScriptableObject
 {
     public EnemyFormationScriptableObject[] enemyFormations;
     public float _waveDuration;
+    public int _goldReward;
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _base;
+    [SerializeField] private Gold _gold;
+    [SerializeField] private GameObject _winPanel;
     //spawn all wave
 
     public void StartSpawnWave(WaveScriptableObject wave) => StartCoroutine(SpawnWave(wave));
@@ -42,6 +44,18 @@ public class EnemySpawner : MonoBehaviour
         {
 
             enemyAttack._target = _base;
+        }
+        if(enemy.TryGetComponent<Health>(out Health health))
+        {
+            health.OnDead.AddListener(()=>_gold.ChangeBudget(enemyFormations._goldReward));
+        }
+        if (enemyFormations._isBoss == true)
+        {
+            //add win event
+            health.OnDead.AddListener(() => _winPanel.SetActive(true));
+            //add time scale =0;
+            health.OnDead.AddListener(() => Time.timeScale = 0);
+
         }
     }
     //spawn Boss

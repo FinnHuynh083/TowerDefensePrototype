@@ -10,4 +10,6 @@ public class EnemyFormationScriptableObject : ScriptableObject
     [SerializeField] public int _enemyCount;
     [SerializeField] public float _enemyDelaySpawnTime;
     [SerializeField] public float _formationDelaySpawnTime;
+    [SerializeField] public int _goldReward;
+    [SerializeField] public bool _isBoss;
 }

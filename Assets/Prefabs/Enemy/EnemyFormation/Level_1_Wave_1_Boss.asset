@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a23dffb839fe49fba8edbabba8dfec7, type: 3}
-  m_Name: Level_1_Wave_1_Formation_2
+  m_Name: Level_1_Wave_1_Boss
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 4221139470992882372, guid: 08a99670e648f4dfc9a50076701016ac,
+  _enemyPrefab: {fileID: 7471362994159810216, guid: 3a75a0c738599447ab1d79b5f544a1db,
     type: 3}
-  _speed: 1
-  _enemyCount: 3
-  _enemyDelaySpawnTime: 2
-  _formationDelaySpawnTime: 15
-  _goldReward: 50
+  _speed: 2
+  _enemyCount: 1
+  _enemyDelaySpawnTime: 0
+  _formationDelaySpawnTime: 45
+  _goldReward: 1000
+  _isBoss: 1

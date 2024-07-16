@@ -18,3 +18,4 @@ MonoBehaviour:
   _enemyCount: 1
   _enemyDelaySpawnTime: 2
   _formationDelaySpawnTime: 0
+  _goldReward: 50

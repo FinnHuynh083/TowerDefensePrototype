@@ -15,3 +15,4 @@ MonoBehaviour:
   enemyFormations:
   - {fileID: 11400000, guid: ac75609a8af884bc59b1adbe076042a2, type: 2}
   _waveDuration: 15
+  _goldReward: 500
