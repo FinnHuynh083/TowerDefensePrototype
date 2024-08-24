@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _base;
     [SerializeField] private Gold _gold;
     [SerializeField] private GameObject _winPanel;
+    [SerializeField] private Camera _mainCamera;
+    [SerializeField] private PlayerProfileModel _playerProfileModel;
+    [SerializeField] private string _newLevelName;
+
+    public UnityEvent BossSpawn;
     //spawn all wave
 
     public void StartSpawnWave(WaveScriptableObject wave) => StartCoroutine(SpawnWave(wave));
@@ -49,13 +55,24 @@ public class EnemySpawner : MonoBehaviour
         {
             health.OnDead.AddListener(()=>_gold.ChangeBudget(enemyFormations._goldReward));
         }
+
+        if(enemy.TryGetComponent<HealthBar>(out HealthBar healthBar))
+        {
+            healthBar._mainCamera = _mainCamera;
+        }
+
         if (enemyFormations._isBoss == true)
         {
             //add win event
             health.OnDead.AddListener(() => _winPanel.SetActive(true));
+            //unlock new level
+            health.OnDead.AddListener(() => _playerProfileModel._playerProfile.SetBoolTrue(_newLevelName));
+            //Save game
+            health.OnDead.AddListener(() => _playerProfileModel.Save());
             //add time scale =0;
             health.OnDead.AddListener(() => Time.timeScale = 0);
-
+            //add noti
+            BossSpawn.Invoke();
         }
     }
     //spawn Boss

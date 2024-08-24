@@ -1,30 +1,39 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine.Utility;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
+using static UnityEngine.UI.CanvasScaler;
 
 public class UnitPlacement : MonoBehaviour
 {
     [SerializeField] private InputActionReference _mousePos;
-    [SerializeField] private InputActionReference _mouseClick;
-    [SerializeField] private InputActionReference _UnitChoosing;
-    [SerializeField] private InputActionReference _UnitChoosing2;
+    //[SerializeField] private InputActionReference _mouseClick;
+    [SerializeField] private Gold _gold;
 
 
     [SerializeField] private Camera _mainCamera;
     [SerializeField] private LayerMask _placementLayerMask;
     [SerializeField] private Transform _basePos;
     [SerializeField] private GridPlacement[] gridPlacements;
+    [SerializeField] private ToggleGroup _toggleGroup;
 
-    [SerializeField] private GameObject _unitPrefab;
-    [SerializeField] private GameObject _unitPrefab2;
 
-    public UnityEvent<GameObject> ChangeUnitPrefab;
+    //public UnityEvent<GameObject> ChangeUnitPrefab;
+    //public UnityEvent OutOfGrid;
+    //public UnityEvent OverLap;
+    //public UnityEvent UnitDataIsNull;
+    //public UnityEvent NotEnoughGold;
 
-    private GameObject unitData;
+
+
+    [NonSerialized]public GameObject unitData;
+    //[NonSerialized] public UnitScriptableObj _unitInfoData;
 
     public Vector3 MousePosToWorldPos()
     {
@@ -37,30 +46,6 @@ public class UnitPlacement : MonoBehaviour
         return hitInfo.point;
     }
 
-    private void Update()
-    {
-        //Vector3 worldPos = MousePosToWorldPos();
-        //print($"WorldPos: {worldPos}");
-
-        //bool inGridRange = IsInGridPlacement(MousePosToWorldPos());
-        //print($"{inGridRange}");
-        if (_UnitChoosing.action.triggered)
-        {
-            unitData = _unitPrefab;
-            ChangeUnitPrefab.Invoke(unitData);
-        }
-
-        if (_UnitChoosing2.action.triggered)
-        {
-            unitData = _unitPrefab2;
-            ChangeUnitPrefab.Invoke(unitData);
-        }
-
-        if (_mouseClick.action.triggered)
-        {
-            PlaceUnit();
-        }
-    }
 
     private bool IsInGridPlacement(Vector3 worldPos)
     {
@@ -98,43 +83,80 @@ public class UnitPlacement : MonoBehaviour
         return new GridPlacement();
     }
 
-    public void PlaceUnit()
+    public PlaceStatus PlaceUnit()
     {
         Vector3 worldPos = MousePosToWorldPos();
         if (IsInGridPlacement(worldPos))
         {
             GridPlacement gridPlacement = InGridPlacement(worldPos);
-            Vector2Int gridPos= gridPlacement.WorldToGridPos(worldPos);
+            Vector2Int gridPos = gridPlacement.WorldToGridPos(worldPos);
 
             //Vector2Int _unitDimension = unitData.GetComponent<Unit>().Dimension;
             Unit unitPrefab = unitData.GetComponent<Unit>();
-
+            //if data null
+            //noti select unit data
+            //return
+            if (unitPrefab == null)
+            {
+                //UnitDataIsNull.Invoke();
+                return PlaceStatus.UnitDataIsNull;
+            }
             if (gridPlacement.Fits(gridPos, unitPrefab.Dimension) == FitStatus.Fits)
             {
                 //them += offset
                 Vector3 _absWorldPos = gridPlacement.GridToWorldPos(gridPos);
-                Vector3 _unitPos = new Vector3(_absWorldPos.x+ unitPrefab.UnitPosOffset(unitPrefab.Dimension.x),
-                    _absWorldPos.y, _absWorldPos.z+ unitPrefab.UnitPosOffset(unitPrefab.Dimension.y));
+                Vector3 _unitPos = new Vector3(_absWorldPos.x + unitPrefab.UnitPosOffset(unitPrefab.Dimension.x),
+                    _absWorldPos.y, _absWorldPos.z + unitPrefab.UnitPosOffset(unitPrefab.Dimension.y));
+
                 //place
                 GameObject unit = Instantiate(unitData, _unitPos, Quaternion.identity);
                 gridPlacement.Occupy(gridPos, unitPrefab.Dimension);
 
                 unit.GetComponent<Targetter>()._basePos = _basePos;
+
+                unit.GetComponent<UnitInfoPanel>()._unitPlacement = this;
+                unit.GetComponent<UnitInfoPanel>()._gold = _gold;
+
+                //them toggle group va get toggle cua unit va add vao toggle group
+                Toggle toggle = unit.GetComponentInChildren<Toggle>();
+
+                _toggleGroup.RegisterToggle(toggle);
+
+                return PlaceStatus.Fits;
+            }
+            else if (gridPlacement.Fits(gridPos, unitPrefab.Dimension) == FitStatus.OutOfBound)
+            {
+                return PlaceStatus.OutOfBound;
             }
             else if(gridPlacement.Fits(gridPos, unitPrefab.Dimension) == FitStatus.OutOfBound)
             {
-                //xu ly out bound
+                return PlaceStatus.OutOfBound;
             }
             else
             {
                 //xu ly overlap
-                print("Overlap");
+                return PlaceStatus.Overlaps;
             }
         }
         else
         {
-            print("Out of Grid Placement");
+            return PlaceStatus.OutOfBound;
         }
     }
+    // lay worl pos >> grid pos + dimesion
+    public void DestroyUnit(Vector3 worldPos, GameObject gameObject)
+    {
+        GridPlacement gridPlacement = InGridPlacement(worldPos);
 
+        Vector2Int unitDimension = gameObject.GetComponent<Unit>().Dimension;
+
+        Vector2Int gridPos = gridPlacement.WorldToGridPos(worldPos);
+
+        gridPlacement.UnOccupy(gridPos, unitDimension);
+
+        //remove khoi toggle group
+        _toggleGroup.UnregisterToggle(gameObject.GetComponentInChildren<Toggle>());
+
+        Destroy(gameObject);
+    }
 }

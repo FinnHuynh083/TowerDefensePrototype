@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a23dffb839fe49fba8edbabba8dfec7, type: 3}
+  m_Name: Level1.4_Wave1_Formation1
+  m_EditorClassIdentifier: 
+  _enemyPrefab: {fileID: 4221139470992882372, guid: 08a99670e648f4dfc9a50076701016ac,
+    type: 3}
+  _speed: 1
+  _enemyCount: 8
+  _enemyDelaySpawnTime: 2
+  _formationDelaySpawnTime: 0
+  _goldReward: 50
+  _isBoss: 0

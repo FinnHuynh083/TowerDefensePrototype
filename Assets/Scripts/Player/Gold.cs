@@ -25,4 +25,12 @@ public class Gold : MonoBehaviour
         BudgetChanged.Invoke(_currentBudget);
     }
 
+    public bool IsEnough(int requiredGold)
+    {
+        if(_currentBudget >= requiredGold)
+        {
+            return true;
+        }
+        return false;
+    }
 }

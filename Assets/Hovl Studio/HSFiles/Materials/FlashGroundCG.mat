@@ -131,7 +131,6 @@ Material:
     - _Surface: 1
     - _UVSec: 0
     - _Usecenterglow: 0
-    - _Usecustomrandom: 0
     - _Usedepth: 1
     - _ZTest: 4
     - _ZWrite: 0
@@ -145,7 +144,7 @@ Material:
     - _TilingMainTexUVNoiseZW: {r: 1, g: 1, b: 1, a: 1}
     - _TintColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &1595654642118587114
+--- !u!114 &766184436741662853
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

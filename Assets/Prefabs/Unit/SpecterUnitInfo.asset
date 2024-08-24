@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220451a84d4f64e0aa18b5cecff7adf2, type: 3}
+  m_Name: SpecterUnitInfo
+  m_EditorClassIdentifier: 
+  _unitPrefab: {fileID: 3069909271130644063, guid: 84743b23aaacd4b55a0b7ef895447a12,
+    type: 3}
+  _unitGhostPrefab: {fileID: 8417991282101695956, guid: 7b34d7e46c6384c7b830719903f28432,
+    type: 3}
+  _unitName: Specter
+  _unitSprite: {fileID: 21300000, guid: 11148c7b36f5e4d1a8ee09233f5b37af, type: 3}
+  _levelInfos:
+  - _RequiredGold: 2000
+    _damage: 20
+    _interval: 1
+    _attackRange: 7
+  - _RequiredGold: 2000
+    _damage: 40
+    _interval: 1
+    _attackRange: 10
+  - _RequiredGold: 4000
+    _damage: 999
+    _interval: 1
+    _attackRange: 12

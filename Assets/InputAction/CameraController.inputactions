@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "MouseClick1",
+                    "type": "Button",
+                    "id": "0628eb16-a281-4194-baa4-d3d01138e35f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "UnitChoosing_test",
                     "type": "Button",
                     "id": "83c293ba-02d6-46f0-a175-ea5a6fa328e0",
@@ -46,6 +55,15 @@
                     "type": "Button",
                     "id": "b9233431-c624-4dbd-bfff-4abeaef05073",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Zoom",
+                    "type": "Value",
+                    "id": "178f4989-0c26-4377-bb09-30202c17c47d",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -104,6 +122,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "UnitChoosing_test1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e20845b1-b4a8-4c49-9e1a-05fa8b8a6de5",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseClick1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "21e62b1d-954f-48e6-b99f-430478b0e0c3",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

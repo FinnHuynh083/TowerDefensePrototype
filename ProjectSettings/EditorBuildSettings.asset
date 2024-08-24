@@ -6,6 +6,33 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MapTesting.unity
+    path: Assets/Scenes/Login.unity
+    guid: 3b761b6ba3fbc430085ab5820262bd84
+  - enabled: 1
+    path: Assets/Scenes/FillName.unity
+    guid: a2bc241cdbb1d4e1dbd09d2dc3c17f28
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 4086f51ca9c79492fa7847ccbfb6dc23
+  - enabled: 1
+    path: Assets/Scenes/Level1.1.unity
     guid: 3f98c71459487400cba521ebb2cbd0d0
+  - enabled: 0
+    path: Assets/Scenes/VFX Test.unity
+    guid: e20e5fc5c94474ff8bb091b8cdc8ed42
+  - enabled: 0
+    path: Assets/Scenes/Ragdoll Test.unity
+    guid: 50eb9fb6143614fc2bd1122d9d9e3d78
+  - enabled: 1
+    path: Assets/Scenes/Level1.2.unity
+    guid: 7d7d3da8084c340bfa6d45f1854df2f9
+  - enabled: 1
+    path: Assets/Scenes/Level1.3.unity
+    guid: 025aa9e2e503348be923cdececfe6d49
+  - enabled: 1
+    path: Assets/Scenes/Level1.4.unity
+    guid: 7afbc6584afcf4534bf67b0e4e82266d
+  - enabled: 1
+    path: Assets/Scenes/Level1.5.unity
+    guid: 21102c8522f8248ff957ef992c36673d
   m_configObjects: {}

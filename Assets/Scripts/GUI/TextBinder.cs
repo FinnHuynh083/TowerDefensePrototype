@@ -9,6 +9,7 @@ public class TextBinder : MonoBehaviour
     [SerializeField] private TMP_Text _waveText;
     [SerializeField] private TMP_Text _goldText;
 
+
     public void SetWaveText(int _wave) => _waveText.SetText($"Wave: {_wave}");
 
     public void SetTimerText(int _time) => _timerText.SetText($"Time: {_time}");

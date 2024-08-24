@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Targetter : MonoBehaviour
 {
-    [SerializeField] private float _targetRange;
+    [SerializeField] public float _targetRange;
     [SerializeField] private SphereCollider _unitSphereCollider;
     [SerializeField] private float _scanRate=0.1f;
     [SerializeField] public Transform _basePos;
@@ -12,6 +12,7 @@ public class Targetter : MonoBehaviour
     private List<Targetable> InRangeEnemies = new List<Targetable>();
     private Targetable _currentTarget= null;
     private float _scanTimer;
+    private float _lastRangeValue = -1;
     /// <summary>
     /// Current Target Who in range & being looked
     /// </summary>
@@ -19,13 +20,18 @@ public class Targetter : MonoBehaviour
 
     private void Start()
     {
-        _unitSphereCollider.radius = _targetRange;
+        //_unitSphereCollider.radius = _targetRange;
         _scanTimer = _scanRate;
     }
     private void Update()
     {
         UpdateTarget();
         //PrintCurrentTarget();
+        if(_lastRangeValue!= _targetRange)
+        {
+            _unitSphereCollider.radius = _targetRange;
+            _lastRangeValue = _targetRange;
+        }
     }
 
     private void PrintCurrentTarget()

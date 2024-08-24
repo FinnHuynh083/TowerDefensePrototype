@@ -42,7 +42,9 @@ public class GridPlacement : MonoBehaviour
                 GameObject newTile = Instantiate(_tilePrefab,center,_tilePrefab.transform.rotation);
                 newTile.transform.SetParent(gameObject.transform);
                 newTile.transform.position = center;
-                newTile.transform.position += new Vector3(0,0.3f,0);
+                //newTile.transform.position += new Vector3(0,0.3f,0);
+                newTile.transform.position += new Vector3(0, 0.01f, 0);
+
             }
         }
     }
@@ -89,6 +91,18 @@ public class GridPlacement : MonoBehaviour
             for (int y = gridPos.y; y < extentSize.y; y++)
             {
                 _availableCell[x, y] = true;
+            }
+        }
+    }
+
+    public void UnOccupy(Vector2Int gridPos, Vector2Int towerSize)
+    {
+        Vector2Int extentSize = gridPos + towerSize;
+        for (int x = gridPos.x; x < extentSize.x; x++)
+        {
+            for (int y = gridPos.y; y < extentSize.y; y++)
+            {
+                _availableCell[x, y] = false;
             }
         }
     }
